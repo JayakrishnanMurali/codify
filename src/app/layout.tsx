@@ -1,3 +1,4 @@
+import { Footer } from "@/components/common/footer/footer";
 import { Navbar } from "@/components/common/navbar/navbar";
 import { ThemeProvider } from "@/components/common/theme/theme-provider";
 import { APP_METADATA } from "@/lib/constants";
@@ -29,7 +30,8 @@ export default function RootLayout({
         >
           <div className="container m-auto p-4">
             <Navbar />
-            {children}
+            <div className="min-h-[calc(100vh-112px)]">{children}</div>
+            <Footer />
           </div>
         </ThemeProvider>
       </body>

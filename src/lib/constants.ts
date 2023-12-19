@@ -9,6 +9,24 @@ export const APP_METADATA: Metadata = {
   description:
     "Generate beautiful images from code snippets and share them on the internet for free.",
   applicationName: "Codify",
+  icons: {
+    icon: [
+      {
+        rel: "icon",
+        url: "/favicon.png",
+      },
+      {
+        rel: "icon",
+        url: "/favicon-32x32.png",
+        sizes: "32x32",
+      },
+      {
+        rel: "apple-touch-icon",
+        url: "/apple-touch-icon.png",
+      },
+    ],
+  },
+  manifest: "/site.webmanifest",
   authors: {
     name: "Jayakrishnan M",
     url: "https://www.ghostkode.com/",
@@ -48,4 +66,11 @@ export const APP_METADATA: Metadata = {
       },
     ],
   },
+};
+
+export const EXTERNAL_LINKS = {
+  twitter: "https://twitter.com/ghostkoder",
+  github: "https://github.com/JayakrishnanMurali/codify",
+  terms: "",
+  privacy: "",
 };

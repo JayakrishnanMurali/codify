@@ -5,7 +5,7 @@ export const Navbar = () => {
   return (
     <div>
       <div className="flex items-center justify-between">
-        <h4 className="text-xl font-bold text-primary">Codify</h4>
+        <h4 className="text-xl font-bold text-primary">Codify.</h4>
 
         <div>
           <ThemeModeToggle />
