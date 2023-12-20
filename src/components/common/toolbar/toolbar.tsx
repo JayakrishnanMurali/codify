@@ -36,7 +36,7 @@ export const Toolbar = () => {
 
         <div className="flex flex-row gap-x-3">
           <Button variant="outline" className="w-full items-center gap-x-1 p-1">
-            <div className="h-full w-full rounded-md bg-purple-500"></div>
+            <div className="h-full w-full rounded-md bg-green-400"></div>
           </Button>
 
           <Button variant="outline" className="items-center gap-x-1">
