@@ -1,4 +1,4 @@
-export const languages = [
+export const monacoLanguages = [
   {
     label: "JavaScript",
     value: "javascript",

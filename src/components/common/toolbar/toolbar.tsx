@@ -10,9 +10,10 @@ import {
 } from "@/components/ui/select";
 import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
 import { ArrowDownToLine, Copy, Sparkles } from "lucide-react";
-import { languages } from "../snippet/monaco-languages";
+import { monacoLanguages } from "../snippet/monaco-languages";
 import { setLanguage, setTheme } from "@/redux/config-slice";
 import { monacoThemes } from "../snippet/monaco-themes";
+import { ColorPopup } from "./color-popup";
 
 export const Toolbar = () => {
   const { language, theme } = useAppSelector((state) => state.config);
@@ -51,7 +52,7 @@ export const Toolbar = () => {
           onValueChange={(val) => {
             dispatch(
               setLanguage(
-                languages.find((lang) => lang.value === val) || language,
+                monacoLanguages.find((lang) => lang.value === val) || language,
               ),
             );
           }}
@@ -60,7 +61,7 @@ export const Toolbar = () => {
             <SelectValue placeholder="Select a language" />
           </SelectTrigger>
           <SelectContent>
-            {languages.map((language) => (
+            {monacoLanguages.map((language) => (
               <SelectItem value={language.value} key={language.value}>
                 {language.label}
               </SelectItem>
@@ -69,9 +70,7 @@ export const Toolbar = () => {
         </Select>
 
         <div className="flex flex-row gap-x-3">
-          <Button variant="outline" className="w-full items-center gap-x-1 p-1">
-            <div className="h-full w-full rounded-md bg-green-400"></div>
-          </Button>
+          <ColorPopup />
 
           <Button variant="outline" className="items-center gap-x-1">
             <Sparkles className="h-4 w-4" />
