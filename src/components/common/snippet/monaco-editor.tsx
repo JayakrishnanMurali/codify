@@ -1,21 +1,13 @@
 "use client";
 
-import Editor, { EditorProps } from "@monaco-editor/react";
+import Editor from "@monaco-editor/react";
 import { useMemo } from "react";
-import { DEFAULT_SETTINGS } from "./monaco-settings";
+import { DEFAULT_OPTIONS, DEFAULT_SETTINGS } from "./monaco-settings";
+import { useAppSelector } from "@/redux/redux-hooks";
+import { sampleJsCode } from "./monaco-sample-js-code";
 
 export const MonacoEditor = () => {
-  const DEFAULT_OPTIONS = {
-    fixedOverflowWidgets: true,
-    lineNumbers: "off",
-    tabSize: 2,
-    insertSpaces: false,
-    minimap: {
-      enabled: false,
-    },
-    fontSize: 16,
-    cursorBlinking: "smooth",
-  } as const satisfies EditorProps["options"];
+  const { language, theme } = useAppSelector((state) => state.config);
 
   const editorOptions = useMemo(() => {
     return {
@@ -30,10 +22,11 @@ export const MonacoEditor = () => {
     <div>
       <Editor
         className="min-h-[40vh]"
-        defaultLanguage="javascript"
-        defaultValue="// some comment"
+        defaultLanguage={language.value}
+        language={language.value}
+        defaultValue={sampleJsCode}
         options={editorOptions}
-        theme="vs-dark"
+        theme={theme.value}
         loading={<></>}
       />
     </div>

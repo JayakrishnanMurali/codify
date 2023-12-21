@@ -1,3 +1,5 @@
+import { EditorProps } from "@monaco-editor/react";
+
 export const DEFAULT_SETTINGS = {
   fontSize: "16",
   bindings: "standard",
@@ -15,3 +17,15 @@ nmap [d :M<Space>editor.action.marker.prev
 nmap gcc :M<Space>editor.action.commentLine`,
   testPanelHeight: 300,
 };
+
+export const DEFAULT_OPTIONS = {
+  fixedOverflowWidgets: true,
+  lineNumbers: "off",
+  tabSize: 2,
+  insertSpaces: false,
+  minimap: {
+    enabled: false,
+  },
+  fontSize: 16,
+  cursorBlinking: "smooth",
+} as const satisfies EditorProps["options"];
