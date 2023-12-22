@@ -14,6 +14,7 @@ import { monacoLanguages } from "../snippet/monaco-languages";
 import { setLanguage, setTheme } from "@/redux/config-slice";
 import { monacoThemes } from "../snippet/monaco-themes";
 import { ColorPopup } from "./color-popup";
+import { imageGen } from "../image-gen/image-gen";
 
 export const Toolbar = () => {
   const { language, theme } = useAppSelector((state) => state.config);
@@ -81,7 +82,11 @@ export const Toolbar = () => {
           </Button>
         </div>
 
-        <Button variant="default" className="items-center gap-x-1">
+        <Button
+          onClick={() => imageGen()}
+          variant="default"
+          className="items-center gap-x-1"
+        >
           <ArrowDownToLine className="h-4 w-4" />
           Export
         </Button>
