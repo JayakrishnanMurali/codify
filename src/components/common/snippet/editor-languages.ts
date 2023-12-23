@@ -1,4 +1,4 @@
-export const editorLanguages = [
+export const editorLanguages: { label: string; value: string }[] = [
   {
     label: "JavaScript",
     value: "javascript",
@@ -16,15 +16,48 @@ export const editorLanguages = [
     value: "java",
   },
   {
-    label: "C++",
-    value: "cpp",
-  },
-  {
     label: "Ruby",
     value: "ruby",
   },
   {
-    label: "Go",
-    value: "go",
+    label: "Rust",
+    value: "rust",
   },
+  {
+    label: "XML",
+    value: "xml",
+  },
+  {
+    label: "SASS",
+    value: "sass",
+  },
+  {
+    label: "Markdown",
+    value: "markdown",
+  },
+  {
+    label: "MySQL",
+    value: "mysql",
+  },
+  {
+    label: "JSON",
+    value: "json",
+  },
+  {
+    label: "HTML",
+    value: "html",
+  },
+  {
+    label: "Go Lang",
+    value: "golang",
+  },
+  {
+    label: "C Sharp",
+    value: "csharp",
+  },
+  { label: "Elixir", value: "elixir" },
+  { label: "CSS", value: "css" },
+  { label: "C++", value: "c_cpp" },
+  { label: "PHP", value: "php" },
+  { label: "Docker", value: "dockerfile" },
 ];

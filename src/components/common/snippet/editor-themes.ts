@@ -1,6 +1,16 @@
-export const editorThemes = [
-  { label: "Dark", value: "vs-dark" },
-  { label: "Light", value: "vs-light" },
-  { label: "High Contrast Dark", value: "hc-black" },
-  { label: "High Contrast Light", value: "hc-light" },
+export const editorThemes: { label: string; value: string }[] = [
+  { label: "Monokai", value: "monokai" },
+  { label: "Github", value: "github" },
+  { label: "Tomorrow", value: "tomorrow" },
+  { label: "Kuroir", value: "kuroir" },
+  { label: "Twilight", value: "twilight" },
+  { label: "Xcode", value: "xcode" },
+  { label: "Textmate", value: "textmate" },
+  { label: "Solarized Dark", value: "solarized_dark" },
+  { label: "Solarized Light", value: "solarized_light" },
+  { label: "Terminal", value: "terminal" },
+  { label: "Tomorrow Night", value: "tomorrow_night" },
+  { label: "Tomorrow Night Blue", value: "tomorrow_night_blue" },
+  { label: "Dracula", value: "dracula" },
+  { label: "One Dark", value: "one_dark" },
 ];
