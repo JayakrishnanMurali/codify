@@ -6,7 +6,7 @@ import {
 } from "@/components/ui/popover";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import React from "react";
-import { monacoColors } from "../snippet/monaco-colors";
+import { wrapperColors } from "../snippet/wrapper-colors";
 import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
 import { setColor } from "@/redux/config-slice";
 
@@ -33,7 +33,7 @@ export const ColorPopup = () => {
           </TabsList>
           <TabsContent value="gradient">
             <div className="grid grid-cols-6 gap-2 py-2">
-              {monacoColors.gradients.map((color, index) => (
+              {wrapperColors.gradients.map((color, index) => (
                 <div
                   role="button"
                   key={index}
@@ -46,7 +46,7 @@ export const ColorPopup = () => {
           </TabsContent>
           <TabsContent value="color">
             <div className="grid grid-cols-6 gap-2 py-2">
-              {monacoColors.solid.map((color, index) => (
+              {wrapperColors.solid.map((color, index) => (
                 <div
                   role="button"
                   key={index}

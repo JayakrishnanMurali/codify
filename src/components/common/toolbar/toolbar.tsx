@@ -10,9 +10,9 @@ import {
 } from "@/components/ui/select";
 import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
 import { ArrowDownToLine, Copy, Sparkles } from "lucide-react";
-import { monacoLanguages } from "../snippet/monaco-languages";
+import { editorLanguages } from "../snippet/editor-languages";
 import { setLanguage, setTheme } from "@/redux/config-slice";
-import { monacoThemes } from "../snippet/monaco-themes";
+import { editorThemes } from "../snippet/editor-themes";
 import { ColorPopup } from "./color-popup";
 import { imageGen } from "../image-gen/image-gen";
 
@@ -30,7 +30,7 @@ export const Toolbar = () => {
           onValueChange={(val) => {
             dispatch(
               setTheme(
-                monacoThemes.find((theme) => theme.value === val) || theme,
+                editorThemes.find((theme) => theme.value === val) || theme,
               ),
             );
           }}
@@ -39,7 +39,7 @@ export const Toolbar = () => {
             <SelectValue placeholder="Select a theme" />
           </SelectTrigger>
           <SelectContent>
-            {monacoThemes.map((theme) => (
+            {editorThemes.map((theme) => (
               <SelectItem value={theme.value} key={theme.value}>
                 {theme.label}
               </SelectItem>
@@ -53,7 +53,7 @@ export const Toolbar = () => {
           onValueChange={(val) => {
             dispatch(
               setLanguage(
-                monacoLanguages.find((lang) => lang.value === val) || language,
+                editorLanguages.find((lang) => lang.value === val) || language,
               ),
             );
           }}
@@ -62,7 +62,7 @@ export const Toolbar = () => {
             <SelectValue placeholder="Select a language" />
           </SelectTrigger>
           <SelectContent>
-            {monacoLanguages.map((language) => (
+            {editorLanguages.map((language) => (
               <SelectItem value={language.value} key={language.value}>
                 {language.label}
               </SelectItem>

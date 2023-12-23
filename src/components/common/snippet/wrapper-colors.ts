@@ -1,4 +1,4 @@
-export const monacoColors = {
+export const wrapperColors = {
   gradients: [
     "linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%)",
     "linear-gradient(90deg, #FFB199 0%, #FF0844 100%)",

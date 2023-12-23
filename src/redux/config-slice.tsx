@@ -1,6 +1,6 @@
-import { monacoColors } from "@/components/common/snippet/monaco-colors";
-import { monacoLanguages } from "@/components/common/snippet/monaco-languages";
-import { monacoThemes } from "@/components/common/snippet/monaco-themes";
+import { wrapperColors } from "@/components/common/snippet/wrapper-colors";
+import { editorLanguages } from "@/components/common/snippet/editor-languages";
+import { editorThemes } from "@/components/common/snippet/editor-themes";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
@@ -11,9 +11,9 @@ interface ConfigState {
 }
 
 const initialState = {
-  language: monacoLanguages[0],
-  theme: monacoThemes[0],
-  color: monacoColors.gradients[0],
+  language: editorLanguages[0],
+  theme: editorThemes[0],
+  color: wrapperColors.gradients[0],
 } as ConfigState;
 
 const configSlice = createSlice({
