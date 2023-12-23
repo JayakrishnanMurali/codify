@@ -15,11 +15,15 @@ editorThemes.forEach((theme) => {
 
 import "ace-builds/src-noconflict/ext-language_tools";
 import { useAppSelector } from "@/redux/redux-hooks";
+import { EditorWrapper } from "./editor-wrapper";
+import { sampleCode } from "./editor-sample-code";
 
 export const Editor = () => {
+  const [value, setValue] = useState(sampleCode);
   const [editorHeight, setEditorHeight] = useState("100px");
 
   function onChange(newValue: string) {
+    setValue(newValue);
     const lines = newValue.split("\n").length;
     const newHeight = `${Math.max(lines * 16.1, 100)}px`;
     setEditorHeight(newHeight);
@@ -28,14 +32,15 @@ export const Editor = () => {
   const { theme, language } = useAppSelector((state) => state.config);
 
   return (
-    <div>
+    <EditorWrapper>
       <AceEditor
         mode={language.value}
         wrapEnabled
         theme={theme.value}
         onChange={onChange}
+        value={value}
         style={{ minHeight: editorHeight, height: "auto" }}
-        name="UNIQUE_ID_OF_DIV"
+        name="ace-editor"
         editorProps={{ $blockScrolling: true }}
         focus
         width="100%"
@@ -49,8 +54,9 @@ export const Editor = () => {
           showFoldWidgets: false,
           displayIndentGuides: false,
           showPrintMargin: false,
+          highlightGutterLine: false,
         }}
       />
-    </div>
+    </EditorWrapper>
   );
 };

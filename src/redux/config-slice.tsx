@@ -6,7 +6,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 
 interface ConfigState {
   language: { label: string; value: string };
-  theme: { label: string; value: string };
+  theme: { label: string; value: string; bg: string };
   color: string;
 }
 
@@ -26,7 +26,10 @@ const configSlice = createSlice({
     ) {
       state.language = action.payload;
     },
-    setTheme(state, action: PayloadAction<{ label: string; value: string }>) {
+    setTheme(
+      state,
+      action: PayloadAction<{ label: string; value: string; bg: string }>,
+    ) {
       state.theme = action.payload;
     },
     setColor(state, action: PayloadAction<string>) {
