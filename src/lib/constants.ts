@@ -2,6 +2,8 @@ import { Metadata } from "next";
 
 export const ROUTE_CONSTANTS = {
   home: "/",
+  terms: "/terms-and-conditions",
+  privacy: "/privacy-policy",
 };
 
 export const APP_METADATA: Metadata = {

@@ -15,6 +15,12 @@ import { setLanguage, setTheme } from "@/redux/config-slice";
 import { editorThemes } from "../snippet/editor-themes";
 import { ColorPopup } from "./color-popup";
 import useImageGen from "@/hooks/useImagegen";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 export const Toolbar = () => {
   const { language, theme, editorRef } = useAppSelector(
@@ -85,13 +91,22 @@ export const Toolbar = () => {
         <div className="flex flex-row gap-x-3">
           <ColorPopup />
 
-          <Button
-            onClick={prettifyCode}
-            variant="outline"
-            className="items-center gap-x-1"
-          >
-            <Sparkles className="h-4 w-4" />
-          </Button>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <Button
+                  onClick={prettifyCode}
+                  variant="outline"
+                  className="items-center gap-x-1"
+                >
+                  <Sparkles className="h-4 w-4" />
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent side="bottom">
+                <p>Prettify code</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </div>
 
         <Button

@@ -1,4 +1,4 @@
-import { EXTERNAL_LINKS } from "@/lib/constants";
+import { EXTERNAL_LINKS, ROUTE_CONSTANTS } from "@/lib/constants";
 import { FileKey, FileTerminal, Github, icons } from "lucide-react";
 
 export const footerLinks = [
@@ -12,13 +12,13 @@ export const footerLinks = [
   {
     id: 2,
     name: "Terms",
-    href: EXTERNAL_LINKS.terms,
+    href: ROUTE_CONSTANTS.terms,
     icon: FileTerminal,
   },
   {
     id: 3,
     name: "Privacy",
-    href: EXTERNAL_LINKS.privacy,
+    href: ROUTE_CONSTANTS.privacy,
     icon: FileKey,
   },
 ];

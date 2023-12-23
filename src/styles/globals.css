@@ -56,6 +56,34 @@
   body {
     @apply bg-background text-foreground;
   }
+
+  h1 {
+    @apply text-4xl font-bold;
+  }
+
+  h2 {
+    @apply text-3xl font-bold;
+  }
+
+  h3 {
+    @apply text-2xl font-bold;
+  }
+
+  h4 {
+    @apply text-xl font-bold;
+  }
+
+  p {
+    @apply text-base text-muted-foreground;
+  }
+
+  li {
+    @apply text-base text-muted-foreground;
+  }
+
+  ul {
+    @apply list-inside list-disc;
+  }
 }
 
 .ace_hidden-cursors {
