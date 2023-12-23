@@ -14,12 +14,24 @@ import { editorLanguages } from "../snippet/editor-languages";
 import { setLanguage, setTheme } from "@/redux/config-slice";
 import { editorThemes } from "../snippet/editor-themes";
 import { ColorPopup } from "./color-popup";
-import { imageGen } from "../image-gen/image-gen";
+import useImageGen from "@/hooks/useImagegen";
 
 export const Toolbar = () => {
-  const { language, theme } = useAppSelector((state) => state.config);
+  const { language, theme, editorRef } = useAppSelector(
+    (state) => state.config,
+  );
 
   const dispatch = useAppDispatch();
+
+  const { downloadImageasPng } = useImageGen();
+
+  const prettifyCode = () => {
+    if (editorRef) {
+      const session = editorRef.editor.getSession();
+      const beautify = require("ace-builds/src-noconflict/ext-beautify");
+      beautify.beautify(session);
+    }
+  };
 
   return (
     <div className=" rounded-lg bg-accent/70 p-2">
@@ -73,17 +85,17 @@ export const Toolbar = () => {
         <div className="flex flex-row gap-x-3">
           <ColorPopup />
 
-          <Button variant="outline" className="items-center gap-x-1">
+          <Button
+            onClick={prettifyCode}
+            variant="outline"
+            className="items-center gap-x-1"
+          >
             <Sparkles className="h-4 w-4" />
-          </Button>
-
-          <Button variant="outline" className="items-center gap-x-1">
-            <Copy className="h-4 w-4" />
           </Button>
         </div>
 
         <Button
-          onClick={() => imageGen()}
+          onClick={downloadImageasPng}
           variant="default"
           className="items-center gap-x-1"
         >
