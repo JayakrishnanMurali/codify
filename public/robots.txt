@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /private/
+Disallow: /secret/
+Allow: /public/
+
+
+Sitemap: https://codify.ghostkode.com/sitemap.xml

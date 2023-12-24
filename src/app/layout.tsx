@@ -1,20 +1,19 @@
 import { Footer } from "@/components/common/footer/footer";
 import { Navbar } from "@/components/common/navbar/navbar";
-import { APP_METADATA } from "@/lib/constants";
 import "@/styles/globals.css";
-import type { Metadata } from "next";
 
 import Providers from "@/providers";
 import { Inter } from "next/font/google";
 import { ClarityAnalytics } from "@/analytics/clarity-analytics";
 import { GoogleAnalytics } from "@/analytics/google-analytics";
+import { getMetadata } from "@/lib/get-metadata";
 
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
 });
 
-export const metadata: Metadata = APP_METADATA;
+export const metadata = getMetadata();
 
 export default function RootLayout({
   children,

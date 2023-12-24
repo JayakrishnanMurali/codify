@@ -1,26 +1,6 @@
-import type { Metadata } from "next";
+import { getMetadata } from "@/lib/get-metadata";
 
-export const metadata: Metadata = {
-  title: "Privacy Policy",
-  description: "Privacy Policy",
-  icons: {
-    icon: [
-      {
-        rel: "icon",
-        url: "/favicon.png",
-      },
-      {
-        rel: "icon",
-        url: "/favicon-32x32.png",
-        sizes: "32x32",
-      },
-      {
-        rel: "apple-touch-icon",
-        url: "/apple-touch-icon.png",
-      },
-    ],
-  },
-};
+export const metadata = getMetadata("Codify | Privacy Policy");
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

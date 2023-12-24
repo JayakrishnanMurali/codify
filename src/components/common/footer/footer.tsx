@@ -2,7 +2,7 @@
 
 import { Button } from "@/components/ui/button";
 import { useExternalRouter } from "@/hooks/useExternalRouter";
-import { APP_METADATA, EXTERNAL_LINKS } from "@/lib/constants";
+import { APP_CREATOR, EXTERNAL_LINKS } from "@/lib/constants";
 import { Twitter } from "lucide-react";
 import Link from "next/link";
 import { footerLinks } from "./footer.constants";
@@ -18,7 +18,7 @@ export const Footer = () => {
         className="cursor-pointer items-center gap-x-1 px-0 text-muted-foreground"
       >
         <Twitter className="h-4 w-4" />
-        <p className="text-sm font-bold ">{APP_METADATA.twitter?.creator}</p>
+        <p className="text-sm font-bold ">{APP_CREATOR}</p>
       </Button>
 
       <div className="flex items-center gap-x-4 text-muted-foreground">
