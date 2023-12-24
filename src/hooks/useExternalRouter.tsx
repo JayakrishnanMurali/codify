@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import { useCallback } from "react";
 
 export const useExternalRouter = () => {
   const push = useCallback((link: string) => {

@@ -2,7 +2,7 @@ import { Footer } from "@/components/common/footer/footer";
 import { Navbar } from "@/components/common/navbar/navbar";
 import { APP_METADATA } from "@/lib/constants";
 import "@/styles/globals.css";
-import { Metadata } from "next";
+import type { Metadata } from "next";
 
 import Providers from "@/providers";
 import { Inter } from "next/font/google";

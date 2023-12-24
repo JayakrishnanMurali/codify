@@ -8,19 +8,19 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
-import { ArrowDownToLine, Copy, Sparkles } from "lucide-react";
-import { editorLanguages } from "../snippet/editor-languages";
-import { setLanguage, setTheme } from "@/redux/config-slice";
-import { editorThemes } from "../snippet/editor-themes";
-import { ColorPopup } from "./color-popup";
-import useImageGen from "@/hooks/useImagegen";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
+import useImageGen from "@/hooks/useImagegen";
+import { setLanguage, setTheme } from "@/redux/config-slice";
+import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
+import { ArrowDownToLine, Sparkles } from "lucide-react";
+import { editorLanguages } from "../snippet/editor-languages";
+import { editorThemes } from "../snippet/editor-themes";
+import { ColorPopup } from "./color-popup";
 
 export const Toolbar = () => {
   const { language, theme, editorRef } = useAppSelector(
@@ -48,7 +48,7 @@ export const Toolbar = () => {
           onValueChange={(val) => {
             dispatch(
               setTheme(
-                editorThemes.find((theme) => theme.value === val) || theme,
+                editorThemes.find((theme) => theme.value === val) ?? theme,
               ),
             );
           }}
@@ -71,7 +71,7 @@ export const Toolbar = () => {
           onValueChange={(val) => {
             dispatch(
               setLanguage(
-                editorLanguages.find((lang) => lang.value === val) || language,
+                editorLanguages.find((lang) => lang.value === val) ?? language,
               ),
             );
           }}

@@ -1,5 +1,5 @@
 import { EXTERNAL_LINKS, ROUTE_CONSTANTS } from "@/lib/constants";
-import { FileKey, FileTerminal, Github, icons } from "lucide-react";
+import { FileKey, FileTerminal, Github } from "lucide-react";
 
 export const footerLinks = [
   {
