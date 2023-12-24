@@ -6,6 +6,8 @@ import type { Metadata } from "next";
 
 import Providers from "@/providers";
 import { Inter } from "next/font/google";
+import { ClarityAnalytics } from "@/analytics/clarity-analytics";
+import { GoogleAnalytics } from "@/analytics/google-analytics";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -21,6 +23,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <ClarityAnalytics />
+      <GoogleAnalytics />
       <body className={`font-sans ${inter.variable}`}>
         <Providers>
           <div className="container m-auto p-4">
