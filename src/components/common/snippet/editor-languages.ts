@@ -16,6 +16,10 @@ export const editorLanguages: { label: string; value: string }[] = [
     value: "java",
   },
   {
+    label: "Dart",
+    value: "dart",
+  },
+  {
     label: "Ruby",
     value: "ruby",
   },
