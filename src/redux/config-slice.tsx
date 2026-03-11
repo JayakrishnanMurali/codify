@@ -18,6 +18,8 @@ interface ConfigState {
   lineNumbers: boolean;
   shadow: ShadowValue;
   exportScale: number;
+  canvasWidth: number;
+  canvasMinHeight: number;
 }
 
 const initialState: ConfigState = {
@@ -32,6 +34,8 @@ const initialState: ConfigState = {
   lineNumbers: false,
   shadow: "bold",
   exportScale: 2,
+  canvasWidth: 560,
+  canvasMinHeight: 0,
 };
 
 const configSlice = createSlice({
@@ -74,6 +78,12 @@ const configSlice = createSlice({
     setExportScale(state, action: PayloadAction<number>) {
       state.exportScale = action.payload;
     },
+    setCanvasWidth(state, action: PayloadAction<number>) {
+      state.canvasWidth = action.payload;
+    },
+    setCanvasMinHeight(state, action: PayloadAction<number>) {
+      state.canvasMinHeight = action.payload;
+    },
   },
 });
 
@@ -89,5 +99,7 @@ export const {
   setLineNumbers,
   setShadow,
   setExportScale,
+  setCanvasWidth,
+  setCanvasMinHeight,
 } = configSlice.actions;
 export default configSlice.reducer;

@@ -13,14 +13,24 @@ const SHADOW_MAP: Record<ShadowValue, string> = {
 };
 
 export const Snippet = () => {
-  const { backgroundColor, padding, borderRadius, shadow } = useAppSelector(
-    (state) => state.config,
-  );
+  const {
+    backgroundColor,
+    padding,
+    borderRadius,
+    shadow,
+    canvasWidth,
+    canvasMinHeight,
+  } = useAppSelector((state) => state.config);
 
   return (
     <div
       id="snippet"
-      style={{ background: backgroundColor, padding: `${padding}px` }}
+      style={{
+        background: backgroundColor,
+        padding: `${padding}px`,
+        width: `${canvasWidth}px`,
+        minHeight: canvasMinHeight > 0 ? `${canvasMinHeight}px` : undefined,
+      }}
       className="flex items-center justify-center rounded-xl"
     >
       <div
@@ -28,6 +38,7 @@ export const Snippet = () => {
           borderRadius: `${borderRadius}px`,
           overflow: "hidden",
           boxShadow: SHADOW_MAP[shadow],
+          width: "100%",
         }}
       >
         <EditorWrapper>

@@ -12,6 +12,8 @@ import useImageGen from "@/hooks/useImagegen";
 import {
   setBackgroundColor,
   setBorderRadius,
+  setCanvasMinHeight,
+  setCanvasWidth,
   setExportScale,
   setFontSize,
   setLanguage,
@@ -175,6 +177,57 @@ export const Sidebar = () => {
               onChange={(v) => dispatch(setLineNumbers(v))}
             />
           </Row>
+        </section>
+
+        <Divider />
+
+        {/* ── CANVAS ── */}
+        <section className="flex flex-col gap-3">
+          <SectionLabel>Canvas</SectionLabel>
+
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-muted-foreground">Width</span>
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {config.canvasWidth}px
+              </span>
+            </div>
+            <input
+              type="range"
+              min={320}
+              max={1200}
+              step={20}
+              value={config.canvasWidth}
+              onChange={(e) =>
+                dispatch(setCanvasWidth(Number(e.target.value)))
+              }
+              className="slider w-full"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs text-muted-foreground">
+                Min height
+              </span>
+              <span className="text-xs tabular-nums text-muted-foreground">
+                {config.canvasMinHeight === 0
+                  ? "Auto"
+                  : `${config.canvasMinHeight}px`}
+              </span>
+            </div>
+            <input
+              type="range"
+              min={0}
+              max={800}
+              step={20}
+              value={config.canvasMinHeight}
+              onChange={(e) =>
+                dispatch(setCanvasMinHeight(Number(e.target.value)))
+              }
+              className="slider w-full"
+            />
+          </div>
         </section>
 
         <Divider />
