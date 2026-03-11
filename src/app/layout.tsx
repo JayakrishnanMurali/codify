@@ -1,4 +1,3 @@
-import { Footer } from "@/components/common/footer/footer";
 import { Navbar } from "@/components/common/navbar/navbar";
 import "@/styles/globals.css";
 
@@ -16,14 +15,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${GeistSans.variable} ${GeistMono.variable}`}>
-      {/* <ClarityAnalytics /> */}
-      {/* <GoogleAnalytics /> */}
       <body className="font-sans">
         <Providers>
-          <div className="container m-auto p-4">
-            <Navbar />
-            <div className="min-h-[calc(100vh-112px)]">{children}</div>
-            {/* <Footer /> */}
+          <div className="flex h-screen flex-col overflow-hidden">
+            <header className="flex-shrink-0 border-b border-border px-4">
+              <Navbar />
+            </header>
+            <div className="min-h-0 flex-1 overflow-hidden">{children}</div>
           </div>
         </Providers>
       </body>

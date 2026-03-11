@@ -90,12 +90,45 @@
   opacity: 0;
 }
 
+/* Range slider */
+.slider {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  height: 16px;
+}
+.slider::-webkit-slider-track {
+  background: hsl(var(--border));
+  height: 3px;
+  border-radius: 2px;
+}
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  background: hsl(var(--foreground));
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin-top: -4.5px;
+}
+.slider::-moz-range-track {
+  background: hsl(var(--border));
+  height: 3px;
+  border-radius: 2px;
+}
+.slider::-moz-range-thumb {
+  background: hsl(var(--foreground));
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  border: none;
+}
+
 /* Shiki code block resets — background/padding controlled by wrapper */
 .shiki,
 .shiki code {
   font-family: var(--font-geist-mono), ui-monospace, "Cascadia Mono", monospace !important;
-  font-size: 13.5px !important;
-  line-height: 1.65 !important;
   background: transparent !important;
 }
 
