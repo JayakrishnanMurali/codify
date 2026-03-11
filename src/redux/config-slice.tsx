@@ -3,32 +3,30 @@ import { editorLanguages } from "@/components/common/snippet/editor-languages";
 import { editorThemes } from "@/components/common/snippet/editor-themes";
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import type AceEditor from "react-ace";
 
 interface ConfigState {
   language: { label: string; value: string };
   theme: { label: string; value: string; bg: string };
-  color: string;
-  // There is a type issue here. Correct it later.
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  editorRef: any;
+  backgroundColor: string;
+  padding: number;
+  borderRadius: number;
+  showWindowChrome: boolean;
 }
 
-const initialState = {
-  language: editorLanguages[0],
-  theme: editorThemes[0],
-  color: wrapperColors.gradients[0],
-  editorRef: null,
-} as ConfigState;
+const initialState: ConfigState = {
+  language: editorLanguages[0]!,
+  theme: editorThemes[0]!,
+  backgroundColor: wrapperColors.gradients[0]!,
+  padding: 48,
+  borderRadius: 12,
+  showWindowChrome: true,
+};
 
 const configSlice = createSlice({
   name: "config",
   initialState,
   reducers: {
-    setLanguage(
-      state,
-      action: PayloadAction<{ label: string; value: string }>,
-    ) {
+    setLanguage(state, action: PayloadAction<{ label: string; value: string }>) {
       state.language = action.payload;
     },
     setTheme(
@@ -37,15 +35,27 @@ const configSlice = createSlice({
     ) {
       state.theme = action.payload;
     },
-    setColor(state, action: PayloadAction<string>) {
-      state.color = action.payload;
+    setBackgroundColor(state, action: PayloadAction<string>) {
+      state.backgroundColor = action.payload;
     },
-    setEditorRef(state, action: PayloadAction<AceEditor | null>) {
-      state.editorRef = action.payload;
+    setPadding(state, action: PayloadAction<number>) {
+      state.padding = action.payload;
+    },
+    setBorderRadius(state, action: PayloadAction<number>) {
+      state.borderRadius = action.payload;
+    },
+    setShowWindowChrome(state, action: PayloadAction<boolean>) {
+      state.showWindowChrome = action.payload;
     },
   },
 });
 
-export const { setColor, setLanguage, setTheme, setEditorRef } =
-  configSlice.actions;
+export const {
+  setLanguage,
+  setTheme,
+  setBackgroundColor,
+  setPadding,
+  setBorderRadius,
+  setShowWindowChrome,
+} = configSlice.actions;
 export default configSlice.reducer;

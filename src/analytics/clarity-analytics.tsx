@@ -1,9 +1,8 @@
-import { env } from "@/env";
 import Script from "next/script";
 import React from "react";
 
 export const ClarityAnalytics = () => {
-  const code = env.NEXT_PUBLIC_CLARITY_ANALYTICS;
+  const code = "";
 
   const clarityCode = `
 (function (c,l,a,r,i,t,y){

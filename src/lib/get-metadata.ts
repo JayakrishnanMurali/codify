@@ -42,8 +42,8 @@ export const getMetadata = (title = "Codify"): Metadata => {
     ],
     twitter: {
       card: "summary_large_image",
-      creator: "@ghostkoder",
-      site: "@ghostkoder",
+      creator: "@jkay_dev",
+      site: "@jkay_dev",
       title: title,
       images: "/og-image.jpg",
       description:

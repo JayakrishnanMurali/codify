@@ -5,8 +5,8 @@ export const ROUTE_CONSTANTS = {
 };
 
 export const EXTERNAL_LINKS = {
-  twitter: "https://twitter.com/ghostkoder",
+  twitter: "https://twitter.com/jkay_dev",
   github: "https://github.com/JayakrishnanMurali/codify",
 };
 
-export const APP_CREATOR = "@ghostkoder";
+export const APP_CREATOR = "@jkay_dev";

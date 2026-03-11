@@ -15,109 +15,161 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import useImageGen from "@/hooks/useImagegen";
-import { setLanguage, setTheme } from "@/redux/config-slice";
+import {
+  setBorderRadius,
+  setLanguage,
+  setPadding,
+  setShowWindowChrome,
+  setTheme,
+} from "@/redux/config-slice";
 import { useAppDispatch, useAppSelector } from "@/redux/redux-hooks";
-import { ArrowDownToLine, Sparkles } from "lucide-react";
+import { Download, Monitor } from "lucide-react";
 import { editorLanguages } from "../snippet/editor-languages";
 import { editorThemes } from "../snippet/editor-themes";
 import { ColorPopup } from "./color-popup";
 
+const PADDING_OPTIONS = [16, 32, 48, 64, 96] as const;
+const BORDER_RADIUS_OPTIONS = [0, 8, 12, 16, 24] as const;
+
 export const Toolbar = () => {
-  const { language, theme, editorRef } = useAppSelector(
-    (state) => state.config,
-  );
-
+  const { language, theme, padding, borderRadius, showWindowChrome } =
+    useAppSelector((state) => state.config);
   const dispatch = useAppDispatch();
-
-  const { downloadImageasPng } = useImageGen();
-
-  const prettifyCode = () => {
-    if (editorRef) {
-      const session = editorRef.editor.getSession();
-      const beautify = require("ace-builds/src-noconflict/ext-beautify");
-      beautify.beautify(session);
-    }
-  };
+  const { downloadImageAsPng } = useImageGen();
 
   return (
-    <div className=" rounded-lg bg-accent/70 p-2">
-      <div className="grid grid-cols-4 gap-3">
+    <TooltipProvider>
+      <div className="flex flex-wrap items-center gap-2 rounded-lg border border-border bg-card px-3 py-2">
+        {/* Theme */}
         <Select
-          defaultValue={theme.value}
           value={theme.value}
-          onValueChange={(val) => {
-            dispatch(
-              setTheme(
-                editorThemes.find((theme) => theme.value === val) ?? theme,
-              ),
-            );
+          onValueChange={(value) => {
+            const selectedTheme = editorThemes.find((t) => t.value === value);
+            if (selectedTheme) dispatch(setTheme(selectedTheme));
           }}
         >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a theme" />
+          <SelectTrigger className="h-8 w-[148px] text-xs">
+            <SelectValue placeholder="Theme" />
           </SelectTrigger>
           <SelectContent>
-            {editorThemes.map((theme) => (
-              <SelectItem value={theme.value} key={theme.value}>
-                {theme.label}
+            {editorThemes.map((t) => (
+              <SelectItem value={t.value} key={t.value} className="text-xs">
+                <span className="flex items-center gap-2">
+                  <span
+                    className="inline-block h-2.5 w-2.5 flex-shrink-0 rounded-full border border-border/40"
+                    style={{ background: t.bg }}
+                  />
+                  {t.label}
+                </span>
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
 
+        {/* Language */}
         <Select
-          defaultValue={language.value}
           value={language.value}
-          onValueChange={(val) => {
-            dispatch(
-              setLanguage(
-                editorLanguages.find((lang) => lang.value === val) ?? language,
-              ),
+          onValueChange={(value) => {
+            const selectedLanguage = editorLanguages.find(
+              (l) => l.value === value,
             );
+            if (selectedLanguage) dispatch(setLanguage(selectedLanguage));
           }}
         >
-          <SelectTrigger className="w-full">
-            <SelectValue placeholder="Select a language" />
+          <SelectTrigger className="h-8 w-[120px] text-xs">
+            <SelectValue placeholder="Language" />
           </SelectTrigger>
           <SelectContent>
-            {editorLanguages.map((language) => (
-              <SelectItem value={language.value} key={language.value}>
-                {language.label}
+            {editorLanguages.map((lang) => (
+              <SelectItem
+                value={lang.value}
+                key={lang.value}
+                className="text-xs"
+              >
+                {lang.label}
               </SelectItem>
             ))}
           </SelectContent>
         </Select>
 
-        <div className="flex flex-row gap-x-3">
-          <ColorPopup />
+        {/* Background color */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div>
+              <ColorPopup />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            <p>Background</p>
+          </TooltipContent>
+        </Tooltip>
 
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger asChild>
-                <Button
-                  onClick={prettifyCode}
-                  variant="outline"
-                  className="items-center gap-x-1"
-                >
-                  <Sparkles className="h-4 w-4" />
-                </Button>
-              </TooltipTrigger>
-              <TooltipContent side="bottom">
-                <p>Prettify code</p>
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+        <div className="h-4 w-px bg-border" />
+
+        {/* Padding */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs text-muted-foreground">Padding</span>
+          <select
+            value={padding}
+            onChange={(e) => dispatch(setPadding(Number(e.target.value)))}
+            className="h-8 rounded-md border border-input bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+          >
+            {PADDING_OPTIONS.map((p) => (
+              <option key={p} value={p}>
+                {p}
+              </option>
+            ))}
+          </select>
         </div>
 
-        <Button
-          onClick={downloadImageasPng}
-          variant="default"
-          className="items-center gap-x-1"
-        >
-          <ArrowDownToLine className="h-4 w-4" />
-          Export
-        </Button>
+        {/* Border radius */}
+        <div className="flex items-center gap-1.5">
+          <span className="text-xs text-muted-foreground">Radius</span>
+          <select
+            value={borderRadius}
+            onChange={(e) =>
+              dispatch(setBorderRadius(Number(e.target.value)))
+            }
+            className="h-8 rounded-md border border-input bg-background px-2 text-xs focus:outline-none focus:ring-1 focus:ring-ring"
+          >
+            {BORDER_RADIUS_OPTIONS.map((r) => (
+              <option key={r} value={r}>
+                {r === 0 ? "None" : r}
+              </option>
+            ))}
+          </select>
+        </div>
+
+        <div className="h-4 w-px bg-border" />
+
+        {/* Window chrome toggle */}
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button
+              variant={showWindowChrome ? "secondary" : "ghost"}
+              size="icon"
+              className="h-8 w-8"
+              onClick={() => dispatch(setShowWindowChrome(!showWindowChrome))}
+            >
+              <Monitor className="h-3.5 w-3.5" />
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent side="bottom">
+            <p>{showWindowChrome ? "Hide" : "Show"} window chrome</p>
+          </TooltipContent>
+        </Tooltip>
+
+        <div className="ml-auto">
+          <Button
+            onClick={downloadImageAsPng}
+            size="sm"
+            className="h-8 gap-1.5 text-xs"
+          >
+            <Download className="h-3.5 w-3.5" />
+            Export PNG
+          </Button>
+        </div>
       </div>
-    </div>
+    </TooltipProvider>
   );
 };

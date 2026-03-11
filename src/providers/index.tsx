@@ -8,8 +8,8 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
     <ReduxStoreProvider>
       <ThemeProvider
         attribute="class"
-        defaultTheme="system"
-        enableSystem
+        defaultTheme="dark"
+        forcedTheme="dark"
         disableTransitionOnChange
       >
         {children}

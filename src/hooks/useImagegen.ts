@@ -1,32 +1,32 @@
-import domToImage from "dom-to-image";
+import { toPng } from "html-to-image";
 import { toast } from "sonner";
 
 const useImageGen = () => {
-  const downloadImageasPng = async () => {
-    const htmlNode = document.getElementById("snippet");
+  const downloadImageAsPng = async () => {
+    const snippetElement = document.getElementById("snippet");
 
-    if (htmlNode) {
-      try {
-        const dataUrl = await domToImage.toPng(htmlNode);
-        if (dataUrl) {
-          const link = document.createElement("a");
-          link.href = dataUrl;
-          link.download = new Date().toISOString() + ".png";
-          document.body.appendChild(link);
-          link.click();
+    if (!snippetElement) return;
 
-          // Remove the link from the document
-          document.body.removeChild(link);
-        }
-      } catch (error) {
-        toast.error("Error generating image", {
-          description: "Something went wrong while generating the image.",
-        });
-      }
+    try {
+      const dataUrl = await toPng(snippetElement, {
+        pixelRatio: 2,
+        skipFonts: false,
+      });
+
+      const downloadLink = document.createElement("a");
+      downloadLink.href = dataUrl;
+      downloadLink.download = `codify-${Date.now()}.png`;
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    } catch {
+      toast.error("Export failed", {
+        description: "Could not generate the image. Try again.",
+      });
     }
   };
 
-  return { downloadImageasPng };
+  return { downloadImageAsPng };
 };
 
 export default useImageGen;

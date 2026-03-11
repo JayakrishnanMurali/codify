@@ -1,22 +1,17 @@
 import React from "react";
-import { ThemeModeToggle } from "./theme-mode-toggle";
 import Link from "next/link";
 import { ROUTE_CONSTANTS } from "@/lib/constants";
 import { ProductHuntTag } from "./product-hunt-tag";
 
 export const Navbar = () => {
   return (
-    <div>
-      <div className="flex items-center justify-between">
-        <Link href={ROUTE_CONSTANTS.home}>
-          <h4 className="text-xl font-bold text-primary">Codify.</h4>
-        </Link>
+    <nav className="flex items-center justify-between py-2">
+      <Link href={ROUTE_CONSTANTS.home} className="flex items-center gap-x-2">
+        <span className="font-mono text-sm font-medium tracking-tight text-muted-foreground select-none">{`</>`}</span>
+        <span className="text-sm font-semibold tracking-tight">codify</span>
+      </Link>
 
-        <div className="flex items-center gap-x-4">
-          <ProductHuntTag />
-          <ThemeModeToggle />
-        </div>
-      </div>
-    </div>
+      <ProductHuntTag />
+    </nav>
   );
 };

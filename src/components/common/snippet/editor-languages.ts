@@ -1,67 +1,26 @@
 export const editorLanguages: { label: string; value: string }[] = [
-  {
-    label: "JavaScript",
-    value: "javascript",
-  },
-  {
-    label: "TypeScript",
-    value: "typescript",
-  },
-  {
-    label: "Python",
-    value: "python",
-  },
-  {
-    label: "Java",
-    value: "java",
-  },
-  {
-    label: "Dart",
-    value: "dart",
-  },
-  {
-    label: "Ruby",
-    value: "ruby",
-  },
-  {
-    label: "Rust",
-    value: "rust",
-  },
-  {
-    label: "XML",
-    value: "xml",
-  },
-  {
-    label: "SASS",
-    value: "sass",
-  },
-  {
-    label: "Markdown",
-    value: "markdown",
-  },
-  {
-    label: "MySQL",
-    value: "mysql",
-  },
-  {
-    label: "JSON",
-    value: "json",
-  },
-  {
-    label: "HTML",
-    value: "html",
-  },
-  {
-    label: "Go Lang",
-    value: "golang",
-  },
-  {
-    label: "C Sharp",
-    value: "csharp",
-  },
-  { label: "Elixir", value: "elixir" },
-  { label: "CSS", value: "css" },
-  { label: "C++", value: "c_cpp" },
+  { label: "TypeScript", value: "typescript" },
+  { label: "JavaScript", value: "javascript" },
+  { label: "Python", value: "python" },
+  { label: "Rust", value: "rust" },
+  { label: "Go", value: "go" },
+  { label: "Java", value: "java" },
+  { label: "C++", value: "cpp" },
+  { label: "C#", value: "csharp" },
   { label: "PHP", value: "php" },
-  { label: "Docker", value: "dockerfile" },
+  { label: "Ruby", value: "ruby" },
+  { label: "Swift", value: "swift" },
+  { label: "Kotlin", value: "kotlin" },
+  { label: "Dart", value: "dart" },
+  { label: "Elixir", value: "elixir" },
+  { label: "HTML", value: "html" },
+  { label: "CSS", value: "css" },
+  { label: "SCSS", value: "scss" },
+  { label: "JSON", value: "json" },
+  { label: "YAML", value: "yaml" },
+  { label: "Markdown", value: "markdown" },
+  { label: "SQL", value: "sql" },
+  { label: "Bash", value: "bash" },
+  { label: "Dockerfile", value: "dockerfile" },
+  { label: "XML", value: "xml" },
 ];

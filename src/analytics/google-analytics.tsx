@@ -1,9 +1,8 @@
-import { env } from "@/env";
 import Script from "next/script";
 import React from "react";
 
 export const GoogleAnalytics = () => {
-  const googleAnalyticsCode = env.NEXT_PUBLIC_GOOGLE_ANALYTICS;
+  const googleAnalyticsCode = "";
 
   return (
     <>
